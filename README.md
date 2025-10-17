@@ -39,4 +39,4 @@ Repository for Showcasing DLRM v2 functionality on a single AMD single-node. Thi
 # Model Training
 1. Start interactive shell session within container: ```docker exec -it dlrm_demo bash```
 2. Modify training configuration (if required) in ```training_config.sh```
-3. Launch training using ```./launch_training_single_node.sh```
+3. Launch training using ```./launch_training_single_node.sh```. Check for training progress in the ./training_logs folder. Upon completion, the final row in the ```results.csv``` file shows the mean rec/s. 
