@@ -955,7 +955,7 @@ def main(argv: List[str]) -> None:
         hbm_cap = 192 * 1024 * 1024 * 1024  # 192GB MI300X memory size
         ddr_cap = 1024 * 1024 * 1024 * 1024  # 1TB host memory
         hbm_mem_bw = 5.3 * 1024 * 1024 * 1024 * 1024 / 1000  # 5.3 TB/s MI300X
-        ddr_mem_bw = 700.0 * 1024 * 1024 * 1024 / 1000 # CHECK THIS
+        ddr_mem_bw = 700.0 * 1024 * 1024 * 1024 / 1000
         hbm_to_ddr_mem_bw = 128 * 1024 * 1024 * 1024 / 1000  # 128 GB/s (pci-e gen5x16)
         intra_host_bw = 0.8 * 7 * 64 * 1024 * 1024 * 1024 / 1000 # ~336 GB/s (80% of 7x64 GB/s using AMD's xGMI)
 
@@ -963,7 +963,7 @@ def main(argv: List[str]) -> None:
         hbm_cap = 256 * 1024 * 1024 * 1024  # 256GB MI325X memory size
         ddr_cap = 1024 * 1024 * 1024 * 1024  # 1TB host memory
         hbm_mem_bw = 6 * 1024 * 1024 * 1024 * 1024 / 1000  # 6 TB/s MI325X
-        ddr_mem_bw = 700.0 * 1024 * 1024 * 1024 / 1000 # CHECK THIS
+        ddr_mem_bw = 700.0 * 1024 * 1024 * 1024 / 1000
         hbm_to_ddr_mem_bw = 128 * 1024 * 1024 * 1024 / 1000  # 128 GB/s (pci-e gen5x16)
         intra_host_bw = 0.8 * 7 * 64 * 1024 * 1024 * 1024 / 1000 # ~336 GB/s (80% of 7x64 GB/s using AMD's xGMI)
 
@@ -971,7 +971,7 @@ def main(argv: List[str]) -> None:
         hbm_cap = 288 * 1024 * 1024 * 1024  # 288GB MI350X memory size
         ddr_cap = 1024 * 1024 * 1024 * 1024  # 1TB host memory
         hbm_mem_bw = 8 * 1024 * 1024 * 1024 * 1024 / 1000  # 8 TB/s MI350X
-        ddr_mem_bw = 700.0 * 1024 * 1024 * 1024 / 1000 # CHECK THIS
+        ddr_mem_bw = 700.0 * 1024 * 1024 * 1024 / 1000
         hbm_to_ddr_mem_bw = 128 * 1024 * 1024 * 1024 / 1000  # 128 GB/s (pci-e gen5x16)
         intra_host_bw = 0.8 * 7 * 76.8 * 1024 * 1024 * 1024 / 1000 # ~427 GB/s (80% of 7x76.8 GB/s using AMD's xGMI)
     

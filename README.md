@@ -32,7 +32,7 @@ Repository for Showcasing DLRM v2 functionality on a single AMD single-node. Thi
     --group-add video \
     --network=host \
     --name dlrm_demo \
-    -it rocm/pytorch-training:v25.9_gfx942 \
+    -it rocm/pytorch-training:latest \
     tail -f /dev/null
    ```
 
