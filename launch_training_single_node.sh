@@ -25,7 +25,7 @@
 #
 #################################################################################
 ## Usage:
-#./launch_training_single_node.sh -d $datatype
+#./launch_training_single_node.sh -p $datatype
 
 ### Parse Args. ###
 DATATYPE="TF32"  # Default value
