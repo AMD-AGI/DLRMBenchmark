@@ -1,23 +1,59 @@
+#!/bin/bash
+###############################################################################
+#
+# MIT License
+#
+# Copyright (c) 2025 Advanced Micro Devices, Inc.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+#################################################################################
+## Usage:
+#./launch_training_single_node.sh -d $datatype
+
+### Parse Args. ###
+DATATYPE="TF32"  # Default value
+while getopts "p:" opt; do
+    case "$opt" in
+        p) DATATYPE="$OPTARG" ;;
+        *) echo "Usage: $0 [-p precision]"; exit 1 ;;
+    esac
+done
+
 ### Configure Workload ###
 echo "Setting env. vars."
-
 #source ./utils/set_env_variables.sh
 source ./training_config.sh
 
+### Set Paths ###
 if [ ! -d "./training_logs" ]; then
   mkdir ./training_logs
 fi
 TIME=$(date +"%Y:%m:%d_%H:%M:%S")
 LOG_FILE="./training_logs/log_${TIME}.txt"
-
-### Set Paths ###
 WORKDIR=./torchrec_dlrm
 export PYTHONPATH=$PYTHONPATH:$WORKDIR
 
 ### Launch Training ###
 echo "Launching DLRM training"
 
-if [[ $TF32_MODE -eq 1 ]]; then
+if [[ "$DATATYPE" == "TF32" ]]; then
   
   echo "TF32 Training Mode"
   HIPBLASLT_ALLOW_TF32=1 TORCH_NCCL_HIGH_PRIORITY=1 GPU_MAX_HW_QUEUES=4 torchrun --nnodes 1 --node_rank 0 --nproc_per_node 8 --role trainer ${WORKDIR}/dlrm_main.py -- \

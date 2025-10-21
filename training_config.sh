@@ -1,5 +1,4 @@
 # Training Config,
-export TF32_MODE=1 # 1: TF32, 0: FP32
 export BATCH_SIZE=32768
 export NUM_TRAIN_BATCHES=1000
 export VALIDATION_FREQ=1500
