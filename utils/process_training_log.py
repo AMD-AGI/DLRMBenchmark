@@ -76,8 +76,6 @@ with open(log_file_path, 'r') as file:
 
 # Compute rec/s values
 num_nodes = args.world_size // 8
-
-
 rec_per_s = np.array(iteration_per_s_list) * batch_size
 
 if len(rec_per_s) > 1:
@@ -88,6 +86,7 @@ else:
     mean_rec_per_s = rec_per_s[0] if len(rec_per_s) > 0 else 0
     std_rec_per_s = 0
     coeff_of_var = 0
+    
 # Append results to CSV file
 file_exists = os.path.isfile(csv_file_path)
 fieldnames = ['Time Stamp', 'Num. Nodes', 'Batch Size', 'Recommendations/s (mean)', 'Recommendations/s (std/mean)']
@@ -121,14 +120,6 @@ if args.plot_loss:
         ax_loss.set_title(f'Training Loss - {timestamp}\nNodes: {num_nodes}, Batch Size: {batch_size}')
         ax_loss.legend()
         ax_loss.grid(True, alpha=0.3)
-        
         plt.tight_layout()
-        loss_plot_filename = os.path.join(plot_folder, f'training_loss_bs_{batch_size}_{timestamp}.png')
-        plt.savefig(loss_plot_filename, dpi=300, bbox_inches='tight')
+        plt.savefig(os.path.join(plot_folder, f'training_loss_bs_{batch_size}_{timestamp}.png'), dpi=300, bbox_inches='tight')
         plt.close(fig_loss)
-
-        loss_data_filename = os.path.join(plot_folder, f'training_loss_bs_{batch_size}_{timestamp}.csv')
-        with open(loss_data_filename, "w", newline="") as f:
-            writer = csv.writer(f)
-            for v in mean_loss_values:
-                writer.writerow([v])
