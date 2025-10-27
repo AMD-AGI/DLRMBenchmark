@@ -1,5 +1,5 @@
 # DLRMBenchmark
-Repository for Showcasing DLRM v2 functionality on a single AMD single-node. This codebase is not meant to showcase the peak achievable performance. The model has been derived from the [ML Perf DLRM v2](https://github.com/mlcommons/training/tree/master/recommendation_v2/torchrec_dlrm) repo.
+Repository for showcasing DLRM v2 functionality on a single AMD node (8x MI3xx). This codebase is not meant to highlight the peak achievable performance. The model has been derived from the [ML Perf DLRM v2](https://github.com/mlcommons/training/tree/master/recommendation_v2/torchrec_dlrm) repo. 
 
 # Installation
 
@@ -13,8 +13,8 @@ Repository for Showcasing DLRM v2 functionality on a single AMD single-node. Thi
    git clone https://github.com/AMD-AGI/DLRMBenchmark.git
    ``` 
 2. Update permissions to 777 for all shell scripts
-3. Pull ROCm + torch image w/ FBGEMM and torchrec installed: egs ```docker pull rocm/pytorch-training:latest```
-4. Launch container. Ensure all required paths including codebase are mounted (similar to /home_dir/ below).
+3. Container with ROCm, PyTorch, FBGEMM and torchrec installed are available at  https://hub.docker.com/r/rocm/pytorch-training/. Pull the container: ```docker pull rocm/pytorch-training:v25.10_gfx942```
+4. Launch container. Ensure all required paths including codebase are mounted (similar to /home_dir/).
     ```
     docker run -d \
     --ipc=host \
@@ -26,13 +26,12 @@ Repository for Showcasing DLRM v2 functionality on a single AMD single-node. Thi
     --device=/dev/infiniband \
     --ulimit memlock=-1:-1 \
     --shm-size 32G \
-    --privileged \
     --cap-add=SYS_PTRACE \
     --security-opt seccomp=unconfined \
     --group-add video \
     --network=host \
     --name dlrm_demo \
-    -it rocm/pytorch-training:latest \
+    -it rocm/pytorch-training:v25.10_gfx942 \
     tail -f /dev/null
    ```
 
