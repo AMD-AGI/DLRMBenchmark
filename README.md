@@ -1,6 +1,5 @@
 # DLRMBenchmark
-Repository for showcasing DLRM v2 functionality on a single AMD node (8x MI3xx). This codebase is not meant to highlight the peak achievable performance. The model has been derived from the [ML Perf DLRM v2](https://github.com/mlcommons/training/tree/master/recommendation_v2/torchrec_dlrm) repo. 
-
+Repository for showcasing DLRM v2 functionality on a single AMD node (8x MI3xx). This codebase is not meant to highlight the peak achievable performance. The model has been derived from the [ML Perf DLRM v2](https://github.com/mlcommons/training/tree/master/recommendation_v2/torchrec_dlrm) repo. We use the [ROCm PyTorch Training Docker](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/training/benchmark-docker/pytorch-training.html?model=pyt_train_dlrm), which comes pre-installed with libraries for DLRM training (FBGEMM, torchrec).
 # Installation
 
 ## Requirements
@@ -13,7 +12,7 @@ Repository for showcasing DLRM v2 functionality on a single AMD node (8x MI3xx).
    git clone https://github.com/AMD-AGI/DLRMBenchmark.git
    ``` 
 2. Update permissions to 777 for all shell scripts
-3. Container with ROCm, PyTorch, FBGEMM and torchrec installed are available at  https://hub.docker.com/r/rocm/pytorch-training/. Pull the container: ```docker pull rocm/pytorch-training:v25.10_gfx942```
+3. Container with ROCm, PyTorch, FBGEMM and torchrec installed are available at  https://hub.docker.com/r/rocm/pytorch-training/. Pull the container: ```docker pull rocm/pytorch-training:v25.11```
 4. Launch container. Ensure all required paths including codebase are mounted (similar to /home_dir/).
     ```
     docker run -d \
@@ -31,7 +30,7 @@ Repository for showcasing DLRM v2 functionality on a single AMD node (8x MI3xx).
     --group-add video \
     --network=host \
     --name dlrm_demo \
-    -it rocm/pytorch-training:v25.10_gfx942 \
+    -it rocm/pytorch-training:v25.11 \
     tail -f /dev/null
    ```
 
