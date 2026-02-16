@@ -38,7 +38,7 @@ done
 
 ### Configure Workload ###
 echo "Setting env. vars."
-#source ./utils/set_env_variables.sh
+#source ./utils/set_env_variables.sh # Unset in case of RCCL issues on node
 source ./training_config.sh
 
 ### Set Paths ###

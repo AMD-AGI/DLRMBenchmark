@@ -12,7 +12,7 @@ Repository for showcasing DLRM v2 functionality on a single AMD node (8x MI3xx).
    git clone https://github.com/AMD-AGI/DLRMBenchmark.git
    ``` 
 2. Update permissions to 777 for all shell scripts
-3. Container with ROCm, PyTorch, FBGEMM and torchrec installed are available at [https://hub.docker.com/r/rocm/primus/](https://hub.docker.com/r/rocm/primus/tags). Pull the container: ```docker pull rocm/primus:v25.11```
+3. Container with ROCm, PyTorch, FBGEMM and torchrec installed are available at [https://hub.docker.com/r/rocm/primus/](https://hub.docker.com/r/rocm/primus/tags). Pull the container: ```docker pull rocm/primus:v26.1```
 4. Launch container. Ensure all required paths including codebase are mounted (similar to /home_dir/).
     ```
     docker run -d \
@@ -30,7 +30,7 @@ Repository for showcasing DLRM v2 functionality on a single AMD node (8x MI3xx).
     --group-add video \
     --network=host \
     --name dlrm_demo \
-    -it rocm/primus:v25.11 \
+    -it rocm/primus:v26.1 \
     tail -f /dev/null
    ```
 
